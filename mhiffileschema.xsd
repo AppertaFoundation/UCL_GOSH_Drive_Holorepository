@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://www.w3schools.com"
+           xmlns="https://www.w3schools.com"
+           elementFormDefault="qualified">
+    <xs:element name="patientCase">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element name="patientId" type="xs:string"/>
+                <xs:element name="revisionNumber" type="xs:integer"/>
+                <xs:element name="lastEditedBy" type="xs:string"/>
+                <xs:element name="timeOfLastEdit" type="xs:dateTime"/>
+                <xs:element name="meshes">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="mesh" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="meshName" type="xs:string"/>
+                                        <xs:element name="fileType" type="xs:string"/>
+                                        <xs:element name="author" type="xs:string"/>
+                                        <xs:element name="timeOfAddition" type="xs:string"/>
+                                        <xs:element name="revisionNumber" type="xs:integer"/>
+                                        <xs:element name="rawData" type="xs:base64Binary"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="keyword" minOccurs="0" maxOccurs="unbounded"  type="xs:string">
+                    <xs:complexType>
+                    <xs:attribute name="id"
+                                  type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="annotations">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="annotation" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="author" type="xs:string"/>
+                                        <xs:element name="timeOfEdit" type="xs:string"/>
+                                        <xs:element name="revisionNumber" type="xs:integer"/>
+                                        <xs:element name="annotationData" type="xs:string">
+                                            <xs:complexType>
+                                                <xs:attribute name="type"
+                                                              type="xs:string"/>
+                                                <xs:attribute name="tag"
+                                                              type="xs:string"/>
+                                                <xs:attribute name="encoding"
+                                                              type="xs:string"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
